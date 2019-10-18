@@ -1,0 +1,33 @@
+---
+title: "lab9AllStars"
+author: "Johnny Tamanaha, Emily Archambault, Eugene Miller, Kaiyuan Fan, Jingzhi Zhang"
+date: "10/25/2019"
+output: html_document
+---
+```{r, setup,  echo = FALSE, message = FALSE, warning = FALSE}
+#Data import & tidy
+data_2015 <- read_csv("2015.csv")
+data_2016 <- read_csv("2016.csv")
+data_2017 <- read_csv("2017.csv")
+
+data_2017 <- data_2017 %>%
+  rename("Happiness Rank" = Happiness.Rank, "Happiness Score" = Happiness.Score, "Whisker high"= Whisker.high, "Whisker low" = Whisker.low, "Economy (GDP per Capita)" = Economy..GDP.per.Capita., "Health (Life Expectancy)" = Health..Life.Expectancy., "Trust (Government Corruption)" = Trust..Government.Corruption., "Dystopia Residual" = Dystopia.Residual)
+
+data_2015 <- data_2015 %>%
+  mutate(Year = 2015)
+data_2015 <- data_2015[,-c(5,3)]
+
+data_2016 <- data_2016 %>%
+  mutate(Year = 2016)
+data_2016 <- data_2016[,-c(3,5,6)]
+
+data_2017 <- data_2017 %>%
+  mutate(Year = 2017)
+data_2017 <- data_2017[,-c(2,4,5)]
+
+regions <- subset(data_2016[,c(1,2)])
+data_2017 <- merge(data_2017,regions, by="Country")
+
+happiness_data <- rbind(data_2015,data_2016)
+happiness_data <- rbind(data_2017,happiness_data)
+```
