@@ -101,4 +101,22 @@ The top 5 happiest countries have standard deviations of: `r happy1`, `r happy2`
 ## Ethics: 
 This analysis seems to be contributing to the greater good, evaluating via proxy what makes people happy and what factors countries need to improve in order to improve the happiness of their population.
 
+## Emily Archambault:
+
+How does the average trust in government percentage of the happiness score vary among the regions of the world?
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(dplyr)
+gov <- happiness_data %>% 
+  select(Country, Year, Region, `Trust (Government Corruption)`, `Happiness Score`)
+govpercent <- gov %>% mutate(GovPerc = `Trust (Government Corruption)` / `Happiness Score` * 100)
+govmean <- govpercent %>% group_by(Region) %>% 
+  summarize(Mean = mean(GovPerc)) %>% arrange(Mean)
+
+ggplot(data=govmean) + 
+  geom_col(mapping=aes(x= reorder(Region, -Mean), y = Mean)) +
+  coord_flip() +
+  labs(x = "Percent of Happiness Score", y = "Region", title= "Comparing Average Trust in Government with Region")
+```
 ## Summary & Individual Contributions:
