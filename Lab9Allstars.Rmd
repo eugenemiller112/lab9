@@ -98,9 +98,6 @@ happy465 <- sd(happiest[465,3:8])
 
 The top 5 happiest countries have standard deviations of: `r happy1`, `r happy2`, `r happy3`, `r happy4`, `r happy5`. Whereas the 5 least happy have standard deviations of: `r happy461`, `r happy462`, `r happy463`, `r happy464`, `r happy465`. This suggests that happy countries have a strong score in one area and good scores in all others, while unhappy countries may have one very poor score, but overall their scores are not very high, and are closer to each other than those of happy countries.  
 
-## Ethics: 
-This analysis seems to be contributing to the greater good, evaluating via proxy what makes people happy and what factors countries need to improve in order to improve the happiness of their population.
-
 ## Emily Archambault:
 
 How does the average trust in government percentage of the happiness score vary among the regions of the world?
@@ -119,4 +116,9 @@ ggplot(data=govmean) +
   coord_flip() +
   labs(x = "Percent of Happiness Score", y = "Region", title= "Comparing Average Trust in Government with Region")
 ```
+
+
+## Ethics: 
+This analysis seems to be contributing to the greater good, evaluating via proxy what makes people happy and what factors countries need to improve in order to improve the happiness of their population.
+
 ## Summary & Individual Contributions:
