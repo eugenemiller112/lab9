@@ -5,6 +5,7 @@ date: "10/25/2019"
 output: html_document
 ---
 ```{r, setup,  echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
 #Data import & tidy
 data_2015 <- read_csv("2015.csv")
 data_2016 <- read_csv("2016.csv")
@@ -31,3 +32,73 @@ data_2017 <- merge(data_2017,regions, by="Country")
 happiness_data <- rbind(data_2015,data_2016)
 happiness_data <- rbind(data_2017,happiness_data)
 ```
+
+Domain Expert: Sven Johannson (Economist at Stockholm School of Economics)
+
+## Overall Question:
+What factors appear to have the greatest influence on the Happiness Score of a country?
+
+This question is important because understanding the reasons behind what makes the people in some countries happier than others is the key to improving overall happiness for everyone. Finding what the common links are can guide how policies are developed, can shape our understanding of cultures around the world, and can give better insight into the biggest problems facing people today.
+
+#Plot here & conclusion#
+
+## Recommendation: 
+
+
+
+## Dataset Description:
+The United Nations World Happiness Report is a survey of the state of global happiness. The 2017 report ranks 155 countries by their happiness levels using the happiness scores and rankings use data from the Gallup World Poll. This report estimates the extend to which six variables contribute to happiness score: GDP per Capita, Family, Life Expectancy, Freedom, Generosity, Trust, Government Corruption. Adding these columns up gives happiness score.
+
+
+## Individual Sections:
+
+## Eugene Miller
+
+How does happiness score vary by region of the world? 
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(dplyr)
+by_regions <- happiness_data %>%
+  group_by(Region) %>%
+  summarize(mean(`Happiness Score`))
+by_regions <- by_regions %>%
+  rename(mn = "mean(`Happiness Score`)") %>%
+  arrange(mn)
+by_regions
+ggplot(by_regions, aes(x = reorder(Region, mn), y = mn)) +
+  geom_bar(stat = "identity", aes(fill = -mn)) + 
+  geom_text(aes(label = paste(format(Region))), angle = 90, hjust = 1.025, color = "white") +
+  theme(axis.text.x = element_blank(), plot.title = element_text(hjust = 0.5))+
+  guides(fill=FALSE) +
+  labs(x = "Region", y = "Mean Happiness Score") +
+  ggtitle("Comparing Happiness Across Regions")
+```
+
+We see that those areas that are happier are those who were historically colonizers, whereas those that are less happy were historically colonized. This suggest that the greatest factor that influences happiness score is in fact history, and not any individual cultural charecteristic or government policy. 
+
+Do the happiest countries have a low or high standard deviation across individual scores for family, corruption, gdp per capita etc?
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+happiest <- happiness_data %>%
+  select(1:8) %>%
+  arrange(desc(`Happiness Score`))
+
+happy1 <- sd(happiest[1, 3:8])
+happy2 <- sd(happiest[2,3:8])
+happy3 <- sd(happiest[3,3:8])
+happy4 <- sd(happiest[4,3:8])
+happy5 <- sd(happiest[5,3:8])
+happy461 <- sd(happiest[461,3:8])
+happy462 <- sd(happiest[462,3:8])
+happy463 <- sd(happiest[463,3:8])
+happy464 <- sd(happiest[464,3:8])
+happy465 <- sd(happiest[465,3:8])
+```
+
+The top 5 happiest countries have standard deviations of: `r happy1`, `r happy2`, `r happy3`, `r happy4`, `r happy5`. Whereas the 5 least happy have standard deviations of: `r happy461`, `r happy462`, `r happy463`, `r happy464`, `r happy465`. This suggests that happy countries have a strong score in one area and good scores in all others, while unhappy countries may have one very poor score, but overall their scores are not very high, and are closer to each other than those of happy countries.  
+
+## Ethics: 
+This analysis seems to be contributing to the greater good, evaluating via proxy what makes people happy and what factors countries need to improve in order to improve the happiness of their population.
+
+## Summary & Individual Contributions:
