@@ -170,6 +170,34 @@ ggplot(data=govmean) +
 ## Ethics: 
 This analysis seems to be contributing to the greater good, evaluating via proxy what makes people happy and what factors countries need to improve in order to improve the happiness of their population. However it does not evaluate why those factors are the state they are in, or how to remedy factors with low scores. 
 
+## Kaiyuan Fan
+
+How does the extent to which contribution of dystopia residual to happiness score in each year?
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+data2015 <- rename(data_2015, Happiness.Score = `Happiness Score` , Dystopia.Residual = `Dystopia Residual`)
+ggplot(data2015) + 
+  geom_smooth(aes(x= Dystopia.Residual , y = Happiness.Score),se = FALSE,colour="#6736b5") +
+  labs(x = "Dystopia Residual", y = "Happiness Score", title= "Relationship between Dystopia Residual and Happiness Score of 2015")
+```
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+data2016 <- rename(data_2016, Happiness.Score = `Happiness Score` , Dystopia.Residual = `Dystopia Residual`)
+ggplot(data2016) + 
+  geom_smooth(aes(x= Dystopia.Residual , y = Happiness.Score),se = FALSE, color ="#d692ad") +
+  labs(x = "Dystopia Residual", y = "Happiness Score", title= "Relationship between Dystopia Residual and Happiness Score of 2016")
+```
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+data2017 <- rename(data_2017, Happiness.Score = `Happiness Score` , Dystopia.Residual = `Dystopia Residual`)
+ggplot(data2017) + 
+  geom_smooth(aes(x= Dystopia.Residual , y = Happiness.Score),se = FALSE) +
+  labs(x = "Dystopia Residual", y = "Happiness Score", title= "Relationship between Dystopia Residual and Happiness Score of 2017")
+```
+
+Findings：
+Three plots show that Dystopia residual basically influence happiness score of countires. We can find that the more dystopia is, the higher the happiness score is. Thus, we can conclude Dystopia residual has positive affect on happiness score of countries.
+
 ## Summary & Individual Contributions:
 
 Eugene Miller: I created an individual plot and answered two individual questions, and contributed to the overall team question and plot. I used geom_col, geom_text, theme, guides, ggtitle, and labs to create my plot.
