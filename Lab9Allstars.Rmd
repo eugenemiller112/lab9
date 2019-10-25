@@ -193,6 +193,57 @@ ggplot(data2017) +
   labs(x = "Dystopia Residual", y = "Happiness Score", title= "Relationship between Dystopia Residual and Happiness Score of 2017")
 ```
 
+## Johnny Tamanaha
+
+How does freedom affect the happiness score of a country?
+
+```{r}
+data_2015 <- read_csv("2015.csv")
+data_2016 <- read_csv("2016.csv")
+data_2017 <- read_csv("2017.csv")
+```
+```{r}
+data_2015 <- data_2015 %>%
+  mutate(Year=2015) %>%
+  select("Country", "Year", "Happiness Rank":"Dystopia Residual") %>%
+  select(-"Standard Error")
+data_2016 <- data_2016 %>%
+  mutate(Year=2016) %>%
+  select("Country", "Year", "Happiness Rank":"Dystopia Residual") %>%
+  select(-c("Lower Confidence Interval", "Upper Confidence Interval"))
+data_2017 <- data_2017 %>%
+  select(-c("Whisker.high", "Whisker.low")) %>%
+  rename("Happiness Rank"="Happiness.Rank", "Dystopia Residual"="Dystopia.Residual", "Happiness Score"="Happiness.Score", "Economy (GDP per Capita)"="Economy..GDP.per.Capita.", "Health (Life Expectancy)"="Health..Life.Expectancy.", "Trust (Government Corruption)"="Trust..Government.Corruption.") %>%
+  mutate(Year=2017) %>%
+  select("Country", "Year", "Happiness Rank":"Dystopia Residual")
+data <- rbind(data_2015, data_2016, data_2017)
+```
+```{r}
+ggplot(data) +
+  geom_point(mapping=aes(x=Freedom, y=`Happiness Score`, color=Year))
+```
+
+The scatterplot of freedom vs happiness score shows a general positive trend between the two variables, which makes logical sense because more freedom should lead to happier citizens. 
+
+```{r}
+happiness_quantiles <- quantile(data$"Happiness Score")
+```
+```{r}
+data <- data %>%
+  mutate(Happiness_Quantile=ifelse(`Happiness Score`<happiness_quantiles[2], "25", ifelse(`Happiness Score`<happiness_quantiles[3], "50", ifelse(`Happiness Score`<happiness_quantiles[4], "75", ifelse(`Happiness Score`<happiness_quantiles[5], "100", "100")))))
+```
+```{r}
+ggplot(data) +
+  geom_boxplot(mapping=aes(x=reorder(`Happiness_Quantile`, `Freedom`, FUN=median), y=Freedom, fill=`Happiness_Quantile`)) +
+  labs(title="Freedom Distribution for Happiness Score Quantiles") +
+  scale_fill_discrete(name="Happiness Quantile") +
+  ylab("Freedom") +
+  xlab("Happiness Quantile")
+```
+
+The boxplots show a trend of higher freedom for higher happiness quantiles, but more spread out freedom for lower happiness quantiles. This implies that freedom is a building block, but not necessarity sufficient for making happy citizens.
+
+
 Findings：
 Three plots show that Dystopia residual basically influence happiness score of countires. We can find that the more dystopia is, the higher the happiness score is. Thus, we can conclude Dystopia residual has positive affect on happiness score of countries.
 
