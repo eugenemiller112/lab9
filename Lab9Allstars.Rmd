@@ -93,7 +93,7 @@ ggplot(correlations, aes(x = reorder(`Variable Compared`, Correlation), y = Corr
 The largest factors affecting happiness score are health and economy, with freedom and family also contributing significantly, wheras generosity and trust seem to be less important in regards to population happiness.
 
 ## Recommendation & Why This is Important for Mr. Johannson: 
-
+Mr. Johannson wants to know what he should tell world leaders who seek to improve their country's happiness. We recommend to Mr. Johannson that if a country wishes to improve its overall happiness then the best features to focus on would be economy, health, and family. According to our analysis, these are the largest contributors to overall happiness, and therefore countries that maximize these three factors will also increase their happiness. 
 
 
 ## Dataset Description:
@@ -124,7 +124,7 @@ ggplot(by_regions, aes(x = reorder(Region, mn), y = mn)) +
   ggtitle("Comparing Happiness Across Regions")
 ```
 
-We see that those areas that are happier are generally in the west or setteled by Europeans. This suggest that the greatest factor that influences happiness score is in fact history, and not any individual cultural charecteristic or government policy. This conclusions is also supported by the team plot, where economy and health (which is correlated to economy) are the largest factors that affect happiness and generally western economies are more wealthy than economies who were exploted for their resources.
+We see that those areas that are happier are generally in the west or setteled by Europeans. This suggest that the greatest factor that influences happiness score is history, and not any individual cultural charecteristic or government policy. This conclusions is also supported by the team plot, where economy and health (which is correlated to economy) are the largest factors that affect happiness and generally western economies are more wealthy than economies who were exploted for their resources.
 
 Another interesting question to ask is; do the happiest countries have a low or high standard deviation across individual scores for family, corruption, gdp per capita etc?
 
@@ -145,7 +145,7 @@ happy464 <- sd(happiest[464,3:8])
 happy465 <- sd(happiest[465,3:8])
 ```
 
-The top 5 happiest countries have standard deviations of: `r happy1`, `r happy2`, `r happy3`, `r happy4`, `r happy5`. Whereas the 5 least happy have standard deviations of: `r happy461`, `r happy462`, `r happy463`, `r happy464`, `r happy465`. This suggests that happy countries have a strong score in one area and good scores in all others, while unhappy countries may have one very poor score, but overall their scores are not very high, and are closer to each other than those of happy countries.  
+The top 5 happiest countries have standard deviations of: `r happy1`, `r happy2`, `r happy3`, `r happy4`, `r happy5` between individual scores. Whereas the 5 least happy have standard deviations of: `r happy461`, `r happy462`, `r happy463`, `r happy464`, `r happy465` between their scores. This suggests that happy countries have a strong score in one area and good scores in all others, while unhappy countries may have one very poor score, but overall their scores are not very high, and are closer to each other than those of happy countries.  
 
 ### Emily Archambault:
 
@@ -165,10 +165,6 @@ ggplot(data=govmean) +
   coord_flip() +
   labs(x = "Percent of Happiness Score", y = "Region", title= "Comparing Average Trust in Government with Region")
 ```
-
-
-## Ethics: 
-This analysis seems to be contributing to the greater good, evaluating via proxy what makes people happy and what factors countries need to improve in order to improve the happiness of their population. However it does not evaluate why those factors are the state they are in, or how to remedy factors with low scores. 
 
 ## Kaiyuan Fan
 
@@ -197,6 +193,11 @@ ggplot(data2017) +
 
 Findings：
 Three plots show that Dystopia residual basically influence happiness score of countires. We can find that the more dystopia is, the higher the happiness score is. Thus, we can conclude Dystopia residual has positive affect on happiness score of countries.
+
+
+## Ethics: 
+This analysis seems to be contributing to the greater good, evaluating via proxy what makes people happy and what factors countries need to improve in order to improve the happiness of their population. However it does not evaluate why those factors are the state they are in, or how to remedy factors with low scores. 
+
 
 ## Summary & Individual Contributions:
 
