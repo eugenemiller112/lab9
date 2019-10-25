@@ -206,3 +206,5 @@ This analysis seems to be contributing to the greater good, evaluating via proxy
 Eugene Miller: I created an individual plot and answered two individual questions, and contributed to the overall team question and plot. I used geom_col, geom_text, theme, guides, ggtitle, and labs to create my plot.
 
 Emily Archambault: I created an individual plot examining the relationship between the trust in government happiness factor and the region of the world. I used geom_col, labs, and coord_flip to make the plot. In addition, I made one of the team plots and wrote the overall question importance.
+
+Kaiyuan: I created three plots to get the relationship between happiness score and Dystopia residual. And I find Dystopia residual has positive influence on the happiness score. I used geom_smooth and labs to get the plot.
