@@ -193,6 +193,10 @@ ggplot(data2017) +
   labs(x = "Dystopia Residual", y = "Happiness Score", title= "Relationship between Dystopia Residual and Happiness Score of 2017")
 ```
 
+Findings：
+Three plots show that Dystopia residual basically influence happiness score of countires. We can find that the more dystopia is, the higher the happiness score is. Thus, we can conclude Dystopia residual has positive affect on happiness score of countries.
+
+
 ## Johnny Tamanaha
 
 How does freedom affect the happiness score of a country?
@@ -242,10 +246,6 @@ ggplot(data) +
 ```
 
 The boxplots show a trend of higher freedom for higher happiness quantiles, but more spread out freedom for lower happiness quantiles. This implies that freedom is a building block, but not necessarity sufficient for making happy citizens.
-
-
-Findings：
-Three plots show that Dystopia residual basically influence happiness score of countires. We can find that the more dystopia is, the higher the happiness score is. Thus, we can conclude Dystopia residual has positive affect on happiness score of countries.
 
 
 ## Ethics: 
