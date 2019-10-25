@@ -257,3 +257,5 @@ This analysis seems to be contributing to the greater good, evaluating via proxy
 Eugene Miller: I created an individual plot and answered two individual questions, and contributed to the overall team question and plot. I used geom_col, geom_text, theme, guides, ggtitle, and labs to create my plot.
 
 Emily Archambault: I created an individual plot examining the relationship between the trust in government happiness factor and the region of the world. I used geom_col, labs, and coord_flip to make the plot. In addition, I made one of the team plots and wrote the overall question importance.
+
+Johnny Tamanaha: I created the individual plots for finding the relationship between freedom and happiness score. I used geom_point and geom_boxplot for plotting. I used both the color and fill aesthetics. I used labs, xlab, ylab, and scale_fill_discrete to label my graphs. 
