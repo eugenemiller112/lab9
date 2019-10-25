@@ -169,6 +169,26 @@ ggplot(data=govmean) +
 
 The plot shows that the regions of the world where trust in government contributes a greater percentage to the overall happiness score can be seen in more typically western areas, most notably Australia and New Zealand. I think this analysis can be beneficial to governments of different countries by giving them a standard of comparison as to where they stand, and a direction to start looking as to how they can improve. Some of the happiness factors (like generosity, for instance) are somewhat vague and unlikely to be impacted by a change in government policy, but the trust in government is something that could conceivably be adjusted.
 
+### Jingzhi Zhang
+
+How does the extent to which generosity contributed to the calculation of the happiness score vary by the region of the world in year 2017?
+
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(readxl)
+world <- read.csv('2017.csv')
+world$Country <- as.character(world$Country)
+world <- select(world,Country,Generosity, Happiness.Score)
+ggplot(data = world)+
+  geom_quantile(mapping = aes(x=Generosity, y=Happiness.Score),colour = "red", size = 2, alpha = 0.5)+
+  labs(title = "Generosity contributed to the calculation of the happiness score")
+
+```
+
+Findings:
+The pot shows that as the extent to which Generosity contributed to the calculation of the Happiness Score going up, the happiness score is going up. Therefore, there was a positive correlation between generosity and happiness score.
+
 ## Kaiyuan Fan
 
 How does the extent to which contribution of dystopia residual to happiness score in each year?
@@ -263,3 +283,4 @@ Johnny Tamanaha: I created the individual plots for finding the relationship bet
 
 Kaiyuan Fan: I created an individual plot that show the relationship between dystopia residual and happiness score. I find that dystopia residual has positive influence on the happiness score. I used geom_smooth and labs to make the plot.
 
+Jingzhi Zhang: I created an individual plot that show the relationship between generosity and happiness score. And there is a positive correlation between these two variables.
