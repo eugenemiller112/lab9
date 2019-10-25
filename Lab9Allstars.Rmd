@@ -197,7 +197,7 @@ ggplot(data2017) +
 
 How does freedom affect the happiness score of a country?
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message = FALSE, warning = FALSE}
 data_2015 <- read_csv("2015.csv")
 data_2016 <- read_csv("2016.csv")
 data_2017 <- read_csv("2017.csv")
