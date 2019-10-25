@@ -40,7 +40,31 @@ What factors appear to have the greatest influence on the Happiness Score of a c
 
 This question is important because understanding the reasons behind what makes the people in some countries happier than others is the key to improving overall happiness for everyone. Finding what the common links are can guide how policies are developed, can shape our understanding of cultures around the world, and can give better insight into the biggest problems facing people today.
 
-#Plot here & conclusion#
+#Plot here & conclusion
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+
+alltab <- happiness_data %>% 
+  mutate(GovPrcnt = `Trust (Government Corruption)` / `Happiness Score` * 100) %>%
+  mutate(EconPrcnt = `Economy (GDP per Capita)` / `Happiness Score` * 100) %>%
+  mutate(HlthPrcnt = `Health (Life Expectancy)` / `Happiness Score` * 100) %>%
+  mutate(FamPrcnt = `Family` / `Happiness Score` * 100)%>%
+  mutate(FreePrcnt = `Freedom` / `Happiness Score` * 100)%>%
+  mutate(GenPrcnt = `Generosity` / `Happiness Score` * 100) %>%
+  gather(`Economy (GDP per Capita)`,`Health (Life Expectancy)`,
+  `Trust (Government Corruption)`, `Family`, `Freedom`, `Generosity`, 
+  key = "Factor1", value = "Delete") %>%
+  select(`GovPrcnt`, `EconPrcnt`, `HlthPrcnt`, `FamPrcnt`, `FreePrcnt`, 
+         `GenPrcnt`, `Factor1`) %>%
+  group_by(Factor1)%>%
+  summarize(Government = mean(GovPrcnt), Economy = mean(EconPrcnt), Health = mean(HlthPrcnt),
+            family = mean(FamPrcnt), freedom = mean(FreePrcnt), generosity = mean(GenPrcnt)) %>%
+  gather(`Government`, `Economy`, `Health`, `family`, `freedom`, `generosity`,
+         key = "Factor", value = "Mean") %>%
+  select(`Factor`, `Mean`) %>%
+  slice(1, 7, 13, 19, 25, 31)
+  
+ggplot(data = alltab) + geom_col(mapping = aes(x = Factor, y = Mean)) + ggtitle("Average Percentage of Factors Contributing to Happiness Score")
+```
 
 ## Recommendation: 
 
